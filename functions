@@ -1,0 +1,85 @@
+#include <iostream>
+#include <math.h>
+#include <string>
+#include "Struct.h"
+
+double mixedMultiplication(Vector a, Vector b, Vector c) {//Смешанное произведение
+	double result = a.x * (b.y * c.z - c.y * b.z) - a.y * (b.x * c.z - c.x * b.z) + a.z * (b.x * c.y - c.x * b.y);
+	cout << "mixed multiplication is " << result << endl;
+	return result;
+};
+
+void printNewVector(Vector a) {//функция, выводящая все координаты вектора в скобочках
+	for (int i = 0; i < 3; i++) {
+		std::cout << "(" << a.x << "," << a.y << "," << a.z << ")" << endl;
+	}
+}
+
+template <typename T>
+void printf(T result) {//функция, аналогичная "cout"-у, но более короткая
+	std::cout << result;
+}
+
+template <class S>
+void printfEndl(S result) {//
+	std::cout << result << std::endl;
+}
+
+void findNormalVector(Vector a, Vector b) {//Нахождение нормального вектора
+	Vector c = vectorMultiplication(a, b);
+	printf("Normal vector: ");
+}
+
+void someTMultiplication(double t, Vector a) {//произведение вектора на скаляр
+	a.x *= t;
+	a.y *= t;
+	a.z *= t;
+	printNewVector(a);
+}
+
+void summVectors(Vector a, Vector b) {//Сложение двух векторов
+	Vector c;
+	c.x = a.x+b.x;
+	c.y = a.y+b.y;
+	c.z = a.z+b.z;
+	printf("Summ of vectors: ");
+	printNewVector(c);
+};
+
+void findLength(Vector a) {//Нахождение длины вектора
+	double ln = (sqrt(pow(a.x, 2) + pow((a.y), 2) + pow((a.z), 2)));
+	printf("The length of vector: ");
+	printf(ln);
+}
+
+void shortedNormed(Vector a) {//Нормирование вектора
+	Vector c;
+	if (a.x == 0)
+		c.x = 0;
+	else 
+		c.x = a.x / abs(a.x);
+	if (a.y == 0)
+		c.y = 0;
+	else c.y = a.y / abs(a.y);
+	if (a.z == 0)
+		c.z = 0;
+	else c.z = a.z / abs(a.z);
+	printf("Normed vector :");
+	printNewVector(c);
+};
+
+void scalMultiplication(Vector a, Vector b) {//Скалярное произведение двух векторов
+	double scal = a.x * b.x + a.y * b.y + a.z * b.z;
+	printf("Scalar multuplication : ");
+	printf(scal);
+};
+
+Vector vectorMultiplication(Vector a, Vector b) {//Векторное произведение двух векторов
+	Vector c;
+	c.x = a.y * b.z - a.z * b.y;
+	c.y = -1 * (a.x * b.z - b.x * a.z);
+	c.z = a.x * b.y - b.x * a.y;
+	printNewVector(c);
+	return c;
+};
+
