@@ -2,8 +2,6 @@
 #include <math.h>
 #include <string>
 #include "Struct.h"
-//#define _USE_MATH_DEFINES
-//#include <tgmath.h>
 
 double mixedMultiplication(Vector a, Vector b, Vector c) {//Смешанное произведение
 	double result = a.x * (b.y * c.z - c.y * b.z) - a.y * (b.x * c.z - c.x * b.z) + a.z * (b.x * c.y - c.x * b.y);
@@ -102,7 +100,6 @@ double getAngle(Vector a, Vector b) {//функция нахождения уг�
 	double module2 = findLength(b);
 	double scalMult = scalMultiplication(a,b);
 	double Cosinus = scalMult / (module1 * module2);
-	//double angle = (acos(Cosinus)) * (180 / M_PI);
 	double angle = (acos(Cosinus)) * (180 / 3.1415926);
 	printf("angle is:");
 	printf(angle);
