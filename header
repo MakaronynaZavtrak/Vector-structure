@@ -29,10 +29,12 @@ template <typename T>
 void printf(T result);
 template <class S>
 void printfEndl(S result);
-void findNormalVector(Vector a, Vector b);
-void someTMultiplication(double t, Vector a);
-void summVectors(Vector a, Vector b);
-void findLength(Vector a);
-void shortedNormed(Vector a);
-void scalMultiplication(Vector a, Vector b);
+Vector findNormalVector(Vector a, Vector b);
+Vector someTMultiplication(double t, Vector a);
+Vector summVectors(Vector a, Vector b);
+double findLength(Vector a);
+Vector shortedNormed(Vector a);
+double scalMultiplication(Vector a, Vector b);
 Vector vectorMultiplication(Vector a, Vector b);
+double getAngle(Vector a, Vector b);
+Vector getRotatedVector(double rotateAngle, Vector a);
