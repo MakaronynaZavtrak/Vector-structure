@@ -7,7 +7,7 @@ double mixedMultiplication(Vector a, Vector b, Vector c) {//Смешанное �
 	double result = a.x * (b.y * c.z - c.y * b.z) - a.y * (b.x * c.z - c.x * b.z) + a.z * (b.x * c.y - c.x * b.y);
 	cout << "Mixed multiplication is " << result << endl;
 	return result;
-};
+}
 
 void printNewVector(Vector a) {//функция, выводящая координаты вектора в скобочках
 		std::cout << "(" << a.x << "," << a.y << "," << a.z << ")" << endl;
@@ -47,7 +47,7 @@ Vector summVectors(Vector a, Vector b) {//Сложение двух вектор
 	printf("Summ of vectors: ");
 	printNewVector(c);
 	return c;
-};
+}
 
 double findLength(Vector a) {//Нахождение длины вектора
 	double ln = (sqrt(pow(a.x, 2) + pow((a.y), 2) + pow((a.z), 2)));
@@ -72,7 +72,7 @@ Vector shortedNormed(Vector a) {//Нормирование вектора
 		printNewVector(c);
 		return c;
 	};
-};
+}
 
 double scalMultiplication(Vector a, Vector b) {//Скалярное произведение двух векторов
 	double scal = a.x * b.x + a.y * b.y + a.z * b.z;
@@ -80,7 +80,7 @@ double scalMultiplication(Vector a, Vector b) {//Скалярное произв
 	printf(scal);
 	printfEndl("");
 	return scal;
-};
+}
 
 Vector vectorMultiplication(Vector a, Vector b) {//Векторное произведение двух векторов
 	Vector c;
