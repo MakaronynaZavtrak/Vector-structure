@@ -107,12 +107,14 @@ double getAngle(Vector a, Vector b) {//функция нахождения уг�
 	return angle;
 }
 
-Vector getRotatedVector(double rotateAngle, Vector a)//функция нахождения координат повёрнутого вектора
+Vector getRotatedVector(Vector a, Vector b)//функция нахождения координат повёрнутого вектора
 {
-	Vector c;
-	c.x = a.x * cos(rotateAngle) - a.z * sin(rotateAngle);
-	c.y = a.y;
-	c.z = a.x * sin(rotateAngle) + a.z * cos(rotateAngle);
+	Vector d = vectorMultiplication(Vector a, Vector b);
+	 rotateAngle = getAngle(a, b);
+	 Vector c;
+	c.x = (cos(rotateAngle)+(1-cos(rotateAngle)*d.x*d.x)*a.x + (1-cos(rotateAngle)*d.x*d.y-sin(rotateAngle)*d.z)*a.y + (1-cos(rotateAngle)*d.x*d.z + sin(rotateAngle)*d.y)*a.z;
+	c.y = (1-cos(rotateAngle)*d.y*d.x + sin(rotateAngle)*d.z)*a.x + (cos(rotateAngle)+(1-cos(rotateAngle)*d.y*d.y))*a.y + (1 - cos(rotateAngle)*d.y*d.z - sin(rotateAngle)*d.x)a.z;
+	c.z = ((1-cos(rotateAngle))*d.z*d.x - sin(rotateAngle)*d.y)*a.x + ((1-cos(rotateAngle))*d.z*d.y + sin(rotateAngle)*d.x)*a.y + (cos(rotateAngle)+(1-cos(rotateAngle))*d.z*d.z)*a.z;
 	printf("Rotated vector is:");
 	printNewVector(c);
 	printfEndl("");
