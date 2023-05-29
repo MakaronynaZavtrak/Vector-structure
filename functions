@@ -10,7 +10,7 @@ double mixedMultiplication(Vector a, Vector b, Vector c) {//Смешанное �
 }
 
 void printNewVector(Vector a) {//функция, выводящая координаты вектора в скобочках
-		std::cout << "(" << a.x << "," << a.y << "," << a.z << ")" << endl;
+	std::cout << "(" << a.x << "," << a.y << "," << a.z << ")" << endl;
 }
 
 template <typename T>
@@ -41,9 +41,9 @@ Vector someTMultiplication(double t, Vector a) {//произведение ве�
 
 Vector summVectors(Vector a, Vector b) {//Сложение двух векторов
 	Vector c;
-	c.x = a.x+b.x;
-	c.y = a.y+b.y;
-	c.z = a.z+b.z;
+	c.x = a.x + b.x;
+	c.y = a.y + b.y;
+	c.z = a.z + b.z;
 	printf("Summ of vectors: ");
 	printNewVector(c);
 	return c;
@@ -59,11 +59,12 @@ double findLength(Vector a) {//Нахождение длины вектора
 
 Vector shortedNormed(Vector a) {//Нормирование вектора
 	double length = findLength(a);
-	if (length == 1 || length == 0){
+	if (length == 1 || length == 0) {
 		printf("Normed vector :");
 		printNewVector(a);
 		return a;
-	} else {
+	}
+	else {
 		Vector c;
 		c.x = a.x / length;
 		c.y = a.y / length;
@@ -98,7 +99,7 @@ Vector vectorMultiplication(Vector a, Vector b) {//Векторное произ
 double getAngle(Vector a, Vector b) {//функция нахождения угла между двумя векторами
 	double module1 = findLength(a);
 	double module2 = findLength(b);
-	double scalMult = scalMultiplication(a,b);
+	double scalMult = scalMultiplication(a, b);
 	double Cosinus = scalMult / (module1 * module2);
 	double angle = (acos(Cosinus)) * (180 / 3.1415926);
 	printf("angle is:");
@@ -109,14 +110,19 @@ double getAngle(Vector a, Vector b) {//функция нахождения уг�
 
 Vector getRotatedVector(Vector a, Vector b)//функция нахождения координат повёрнутого вектора
 {
-	Vector d = vectorMultiplication(Vector a, Vector b);
-	 rotateAngle = getAngle(a, b);
-	 Vector c;
-	c.x = (cos(rotateAngle)+(1-cos(rotateAngle)*d.x*d.x)*a.x + (1-cos(rotateAngle)*d.x*d.y-sin(rotateAngle)*d.z)*a.y + (1-cos(rotateAngle)*d.x*d.z + sin(rotateAngle)*d.y)*a.z;
-	c.y = (1-cos(rotateAngle)*d.y*d.x + sin(rotateAngle)*d.z)*a.x + (cos(rotateAngle)+(1-cos(rotateAngle)*d.y*d.y))*a.y + (1 - cos(rotateAngle)*d.y*d.z - sin(rotateAngle)*d.x)a.z;
-	c.z = ((1-cos(rotateAngle))*d.z*d.x - sin(rotateAngle)*d.y)*a.x + ((1-cos(rotateAngle))*d.z*d.y + sin(rotateAngle)*d.x)*a.y + (cos(rotateAngle)+(1-cos(rotateAngle))*d.z*d.z)*a.z;
-	printf("Rotated vector is:");
-	printNewVector(c);
-	printfEndl("");
-	return c;
+	if ((a.x == 0 && a.y == 0 && a.z == 0) || (b.x == 0 && b.y == 0 && b.z == 0)) {
+		cout << "Error! This vector is not defined" << endl;
+	}
+	else {
+		Vector d = vectorMultiplication(a, b);
+		double rotateAngle = getAngle(a, b);
+		Vector c;
+		c.x = (cos(rotateAngle) + (1 - cos(rotateAngle) * d.x * d.x) * a.x + (1 - cos(rotateAngle) * d.x * d.y - sin(rotateAngle) * d.z) * a.y + (1 - cos(rotateAngle) * d.x * d.z + sin(rotateAngle) * d.y) * a.z);
+		c.y = (1 - cos(rotateAngle) * d.y * d.x + sin(rotateAngle) * d.z) * a.x + (cos(rotateAngle) + (1 - cos(rotateAngle) * d.y * d.y)) * a.y + (1 - cos(rotateAngle) * d.y * d.z - sin(rotateAngle) * d.x) * a.z;
+		c.z = ((1 - cos(rotateAngle)) * d.z * d.x - sin(rotateAngle) * d.y) * a.x + ((1 - cos(rotateAngle)) * d.z * d.y + sin(rotateAngle) * d.x) * a.y + (cos(rotateAngle) + (1 - cos(rotateAngle)) * d.z * d.z) * a.z;
+		printf("Rotated vector is:");
+		printNewVector(c);
+		printfEndl("");
+		return c;
+	};
 }
