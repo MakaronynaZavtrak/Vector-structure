@@ -37,4 +37,4 @@ Vector shortedNormed(Vector a);
 double scalMultiplication(Vector a, Vector b);
 Vector vectorMultiplication(Vector a, Vector b);
 double getAngle(Vector a, Vector b);
-Vector getRotatedVector(double rotateAngle, Vector a);
+Vector getRotatedVector(Vector a, Vector b);
